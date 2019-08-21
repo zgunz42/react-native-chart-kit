@@ -232,7 +232,7 @@ class LineChart extends AbstractChart {
     const {borderRadius = 0} = style
     const config = {
       width,
-      height
+      height: height - paddingTop
     }
     const datas = this.getDatas(data.datasets)
     return (
