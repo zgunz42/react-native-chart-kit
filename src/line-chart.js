@@ -212,8 +212,8 @@ class LineChart extends AbstractChart {
   }
 
   render() {
-    const paddingTop = 16
-    const paddingRight = 64
+    const paddingTop = Number(this.props.paddingTop ? this.props.paddingTop : 16)
+    const paddingRight = Number(this.props.paddingLeft ? this.props.paddingLeft : 64)
     const {
       width,
       height,

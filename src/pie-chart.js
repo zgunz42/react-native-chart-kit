@@ -93,7 +93,7 @@ class PieChart extends AbstractChart {
               this.props.width / 2 / 2 +
               Number(this.props.paddingLeft ? this.props.paddingLeft : 0)
             }
-            y={this.props.height / 2}
+            y={this.props.height / 2 + Number(this.props.paddingTop ? this.props.paddingTop : 0)}
           >
             {slices}
           </G>

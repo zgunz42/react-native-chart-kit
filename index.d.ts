@@ -19,6 +19,8 @@ export interface LineChartProps {
   decorator?: Function
   onDataPointClick?: Function
   style?: object
+  paddingLeft?: string|number
+  paddingTop?: string|number
   bezier?: boolean
 }
 
@@ -66,7 +68,8 @@ export interface PieChartProps {
   chartConfig: object
   accessor: string
   backgroundColor: string
-  paddingLeft: string
+  paddingLeft?: string|number
+  paddingTop?: string|number
   center?: Array<number>
   absolute?: boolean
 }
