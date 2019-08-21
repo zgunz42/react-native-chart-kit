@@ -80,7 +80,7 @@ class AbstractChart extends Component {
       height,
       paddingTop,
       paddingRight,
-      yLabelsOffset = 12
+      yLabelsOffset = -4
     } = config
     const decimalPlaces = this.props.chartConfig.decimalPlaces === undefined ? 2 : this.props.chartConfig.decimalPlaces
     const yAxisLabel = this.props.yAxisLabel || ''
@@ -94,15 +94,15 @@ class AbstractChart extends Component {
         const label = this.props.fromZero ?
           (this.calcScaler(data) / (count - 1)) * i + Math.min(...data, 0) :
           (this.calcScaler(data) / (count - 1)) * i + Math.min(...data)
-        yLabel = `${yAxisLabel}${label.toFixed(decimalPlaces)}`
+        yLabel = `${yAxisLabel}${Math.floor(label)}`
       }
 
       return (
         <Text
           key={Math.random()}
           x={paddingRight - yLabelsOffset}
-          textAnchor="end"
-          y={(height * 3) / 4 - ((height - paddingTop) / count) * i + 12}
+          textAnchor="start"
+          y={(height * ((count - i) / count)) + 12 * 2 }
           fontSize={12}
           fill={this.props.chartConfig.color(0.5)}
         >
@@ -133,15 +133,15 @@ class AbstractChart extends Component {
         <Text
           key={Math.random()}
           x={
-            (((width - paddingRight) / labels.length) * i +
+            ((((width - paddingRight) / labels.length) * i +
               paddingRight +
               horizontalOffset) *
-            fac
+            fac) + 4
           }
           y={(height * 3) / 4 + paddingTop + fontSize * 2}
           fontSize={fontSize}
           fill={this.props.chartConfig.color(0.5)}
-          textAnchor="middle"
+          textAnchor="start"
         >
           {label}
         </Text>
